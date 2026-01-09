@@ -6,10 +6,13 @@ A TypeScript library for 2D and 3D animation in the browser using WebGPU.
 
 - **WebGPU Rendering**: Modern GPU-accelerated graphics
 - **2D & 3D Support**: Primitives, meshes, and transforms
-- **Animation System**: Keyframes, easing, and tweening
+- **Animation System**: Keyframes, easing, and tweening with 20+ easing functions
 - **Scene Graph**: Hierarchical parent-child transforms
-- **Material System**: Shaders, uniforms, and textures
+- **Material System**: Multiple material types (basic, textured, gradient, vertex color, wireframe)
+- **Shader System**: Built-in WGSL shaders and custom shader support
+- **Texture System**: Image loading and procedural texture generation
 - **Camera System**: 2D orthographic and 3D perspective cameras
+- **Wireframe Rendering**: Line-based rendering for geometric visualization
 - **Zero Dependencies**: Pure TypeScript implementation
 
 ## Requirements
@@ -95,10 +98,10 @@ bun run examples
 ```
 
 This will build the library and start a dev server. Then open your browser to `http://localhost:3000/examples/` and explore:
-- **01-basic-setup.html** - Simple colored cube
-- **02-primitives.html** - Multiple 3D shapes
-- **03-animation.html** - Keyframe animations with easing
-- **04-scene-graph.html** - Solar system with hierarchical transforms
+- **01-basic-setup.html** - Textured dice with numbered faces and edge highlighting
+- **02-primitives.html** - Multi-colored cube, gradient sphere (bouncing), and wireframe dodecahedron
+- **03-animation.html** - Five wireframe dodecahedrons demonstrating different easing functions (Linear, EaseInOut, Bounce, Elastic, Back)
+- **04-scene-graph.html** - Solar system with procedurally textured Earth, hierarchical transforms
 
 For development with auto-rebuild:
 

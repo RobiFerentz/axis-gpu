@@ -55,38 +55,45 @@ bun run dev-server.ts  # Terminal 2 - serves examples
 
 A minimal example showing:
 - WebGPU context initialization
-- Creating a simple cube
-- Basic rendering loop
-- Camera setup
+- Procedurally generated dice texture with dots (1-6)
+- Edge highlighting on dice faces
+- Textured material rendering
+- Basic rendering loop and camera setup
 
 ### 02 - Primitives
 **File:** `02-primitives.html`
 
-Demonstrates the built-in primitive geometries:
-- Cube
-- Sphere
-- Cylinder
-- Plane
-- Multiple objects in a scene
+Demonstrates various rendering techniques:
+- **Multi-colored cube** - Each face a different color using vertex colors
+- **Gradient sphere** - RGB gradient shader with bouncing animation
+- **Dodecahedron** - Wireframe rendering with 12 colorful faces
+- **Ground plane** - Simple flat surface
+- Multiple materials (vertex color, gradient, basic)
 
-### 03 - Animation
+### 03 - Animation & Easing
 **File:** `03-animation.html`
 
-Shows the animation system:
-- Keyframe animation
-- Animation clips and tracks
-- Easing functions
-- Animation mixer
-- Property animation (position, rotation, scale)
+Visual comparison of easing functions:
+- Five wireframe dodecahedrons bouncing simultaneously
+- Each uses a different easing function:
+  - **Red**: Linear (constant speed)
+  - **Green**: EaseInOut (smooth acceleration/deceleration)
+  - **Blue**: Bounce (bounces at bottom)
+  - **Yellow**: Elastic (springs and oscillates)
+  - **Magenta**: Back (pulls back before moving)
+- Demonstrates the `Tween` class for property animation
+- Shows how easing dramatically affects motion feel
 
 ### 04 - Scene Graph
 **File:** `04-scene-graph.html`
 
-Demonstrates hierarchical transforms:
-- Parent-child relationships
-- Solar system example
-- Nested transformations
-- Transform inheritance
+Solar system with hierarchical transforms:
+- **Sun** - Yellow sphere at center
+- **Earth** - Procedurally textured planet with oceans, land, and ice caps
+- **Moon** - Orbits Earth (nested transforms)
+- **Mars** - Red planet in outer orbit
+- Parent-child relationships demonstrating transform inheritance
+- Multiple levels of nesting (Sun → Earth → Moon)
 
 ## Browser Requirements
 
