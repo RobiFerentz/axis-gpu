@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axis GPU Examples</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 2.5em;
+    }
+    
+    .subtitle {
+      color: #666;
+      margin-bottom: 40px;
+      font-size: 1.1em;
+    }
+    
+    .examples-grid {
+      display: grid;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .example-card {
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 24px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    
+    .example-card:hover {
+      border-color: #667eea;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    }
+    
+    .example-number {
+      color: #667eea;
+      font-weight: bold;
+      font-size: 0.9em;
+      margin-bottom: 8px;
+    }
+    
+    .example-title {
+      font-size: 1.4em;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    
+    .example-description {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .info-box {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      border-radius: 4px;
+      margin-bottom: 30px;
+    }
+    
+    .info-box h3 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+    
+    .info-box p {
+      color: #666;
+      line-height: 1.6;
+    }
+    
+    .requirements {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 30px;
+    }
+    
+    .requirements strong {
+      color: #856404;
+    }
+    
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎨 Axis GPU Examples</h1>
+    <p class="subtitle">Interactive examples demonstrating the Axis GPU library</p>
+    
+    <div class="requirements">
+      <strong>⚠️ Requirements:</strong> These examples require a browser with WebGPU support (Chrome 113+, Edge 113+, or Safari 18+).
+    </div>
+    
+    <div class="info-box">
+      <h3>About Axis GPU</h3>
+      <p>
+        Axis GPU is a TypeScript library for 2D and 3D animation in the browser using WebGPU.
+        It provides a comprehensive set of tools for rendering, animation, and scene management.
+      </p>
+    </div>
+    
+    <h2 style="margin-bottom: 20px; color: #333;">Examples</h2>
+    
+    <div class="examples-grid">
+      <a href="/examples/01-basic-setup.html" class="example-card">
+        <div class="example-number">EXAMPLE 01</div>
+        <div class="example-title">Basic Setup</div>
+        <div class="example-description">
+          Initialize WebGPU and render a simple colored cube. Learn the basics of setting up a renderer, scene, and camera.
+        </div>
+      </a>
+      
+      <a href="/examples/02-primitives.html" class="example-card">
+        <div class="example-number">EXAMPLE 02</div>
+        <div class="example-title">Primitives</div>
+        <div class="example-description">
+          Explore built-in 3D primitive geometries including cubes, spheres, cylinders, and planes with different colors.
+        </div>
+      </a>
+      
+      <a href="/examples/03-animation.html" class="example-card">
+        <div class="example-number">EXAMPLE 03</div>
+        <div class="example-title">Animation System</div>
+        <div class="example-description">
+          Discover the animation system with keyframes, easing functions, and property animation for position, rotation, and scale.
+        </div>
+      </a>
+      
+      <a href="/examples/04-scene-graph.html" class="example-card">
+        <div class="example-number">EXAMPLE 04</div>
+        <div class="example-title">Scene Graph</div>
+        <div class="example-description">
+          See hierarchical transforms in action with a solar system example demonstrating parent-child relationships.
+        </div>
+      </a>
+    </div>
+    
+    <div class="info-box">
+      <h3>💡 Tips</h3>
+      <p>
+        • Open your browser's developer console to see any errors or messages<br>
+        • Check that your browser supports WebGPU at <code>chrome://gpu</code><br>
+        • View the source code of each example to learn how it works
+      </p>
+    </div>
+  </div>
+</body>
+</html>

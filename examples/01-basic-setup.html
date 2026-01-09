@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01 - Basic Setup - Axis GPU</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      background: #000;
+    }
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+    }
+    #info {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
+      border-radius: 5px;
+      max-width: 300px;
+    }
+    #nav {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    #nav a {
+      color: white;
+      background: rgba(102, 126, 234, 0.8);
+      padding: 8px 16px;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: background 0.2s;
+    }
+    #nav a:hover {
+      background: rgba(102, 126, 234, 1);
+    }
+    #nav a.current {
+      background: rgba(118, 75, 162, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div id="info">
+    <h3>01 - Basic Setup</h3>
+    <p>A textured dice with dots showing numbers 1-6</p>
+  </div>
+  <nav id="nav">
+    <a href="/examples/" title="Back to examples">🏠 Home</a>
+    <a href="01-basic-setup.html" class="current">01</a>
+    <a href="02-primitives.html">02</a>
+    <a href="03-animation.html">03</a>
+    <a href="04-scene-graph.html">04</a>
+  </nav>
+  <canvas id="canvas"></canvas>
+  <script type="module" src="./01-basic-setup.ts"></script>
+</body>
+</html>
