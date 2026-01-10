@@ -19,6 +19,7 @@
     "clean": "rm -rf dist",
     "docs": "typedoc",
     "docs:watch": "typedoc --watch",
+    "docs:publish": "npm run docs && bash publish-wiki.sh",
     "examples": "bun run build && bun run dev-server.ts"
   },
   "keywords": [
