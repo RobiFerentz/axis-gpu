@@ -59,11 +59,17 @@ jobs:
           mkdir -p _site
           # Copy the built library files
           cp -r dist _site/dist
+          echo "Copied dist files:"
+          ls -la _site/dist/
+
           # Copy the examples
           mkdir -p _site/examples
           cp examples/*.html _site/examples/
           cp examples/*.js _site/examples/
           cp examples/*.md _site/examples/ 2>/dev/null || true
+
+          echo "Files in _site/examples:"
+          ls -la _site/examples/
 
           # Update HTML files to reference .js instead of .ts
           for html_file in _site/examples/*.html; do
@@ -73,20 +79,48 @@ jobs:
             fi
           done
 
+          # Fix absolute paths for GitHub Pages project deployment
+          # Replace /examples/ with ./examples/ in the examples index
+          if [ -f "_site/examples/index.html" ]; then
+            echo "Fixing paths in examples/index.html for GitHub Pages"
+            sed -i 's|href="/examples/|href="./|g' _site/examples/index.html
+          fi
+
+          # Fix navigation links in example HTML files
+          for html_file in _site/examples/*.html; do
+            if [ -f "$html_file" ] && [ "$(basename "$html_file")" != "index.html" ]; then
+              echo "Fixing navigation paths in $html_file"
+              # Fix home link: /examples/ -> ./
+              sed -i 's|href="/examples/"|href="./"|g' "$html_file"
+              # Fix example file links to use relative paths
+              sed -i 's|href="01-basic-setup.html"|href="./01-basic-setup.html"|g' "$html_file"
+              sed -i 's|href="02-primitives.html"|href="./02-primitives.html"|g' "$html_file"
+              sed -i 's|href="03-animation.html"|href="./03-animation.html"|g' "$html_file"
+              sed -i 's|href="04-scene-graph.html"|href="./04-scene-graph.html"|g' "$html_file"
+            fi
+          done
+
           # Create a root index.html that redirects to examples
           cat > _site/index.html << 'EOF'
           <!DOCTYPE html>
           <html lang="en">
           <head>
             <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0; url=/examples/">
+            <meta http-equiv="refresh" content="0; url=examples/index.html">
+            <script>
+              // Backup JavaScript redirect
+              window.location.href = 'examples/index.html';
+            </script>
             <title>Axis GPU - Redirecting...</title>
           </head>
           <body>
-            <p>Redirecting to <a href="/examples/">examples</a>...</p>
+            <p>Redirecting to <a href="examples/index.html">examples</a>...</p>
           </body>
           </html>
           EOF
+
+          echo "Final _site structure:"
+          find _site -type f | head -20
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
