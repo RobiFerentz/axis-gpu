@@ -100,25 +100,6 @@ jobs:
             fi
           done
 
-          # Create a root index.html that redirects to examples
-          cat > _site/index.html << 'EOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0; url=examples/index.html">
-            <script>
-              // Backup JavaScript redirect
-              window.location.href = 'examples/index.html';
-            </script>
-            <title>Axis GPU - Redirecting...</title>
-          </head>
-          <body>
-            <p>Redirecting to <a href="examples/index.html">examples</a>...</p>
-          </body>
-          </html>
-          EOF
-
           echo "Final _site structure:"
           find _site -type f | head -20
 
