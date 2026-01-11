@@ -5,3 +5,7 @@ docs/
 .DS_Store
 .env
 *.local
+
+# Transpiled example files (built during CI)
+examples/*.js
+examples/*.js.map

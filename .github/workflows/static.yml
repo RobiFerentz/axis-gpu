@@ -31,13 +31,71 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build library
+        run: bun run build
+
+      - name: Build examples
+        run: |
+          # Transpile each example TypeScript file to JavaScript
+          for ts_file in examples/*.ts; do
+            if [ -f "$ts_file" ]; then
+              js_file="${ts_file%.ts}.js"
+              echo "Building $ts_file -> $js_file"
+              bun build "$ts_file" --outfile "$js_file" --target browser --format esm
+            fi
+          done
+
+      - name: Create deployment directory
+        run: |
+          mkdir -p _site
+          # Copy the built library files
+          cp -r dist _site/dist
+          # Copy the examples
+          mkdir -p _site/examples
+          cp examples/*.html _site/examples/
+          cp examples/*.js _site/examples/
+          cp examples/*.md _site/examples/ 2>/dev/null || true
+
+          # Update HTML files to reference .js instead of .ts
+          for html_file in _site/examples/*.html; do
+            if [ -f "$html_file" ]; then
+              echo "Updating script references in $html_file"
+              sed -i 's/\.ts"/.js"/g' "$html_file"
+            fi
+          done
+
+          # Create a root index.html that redirects to examples
+          cat > _site/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta http-equiv="refresh" content="0; url=/examples/">
+            <title>Axis GPU - Redirecting...</title>
+          </head>
+          <body>
+            <p>Redirecting to <a href="/examples/">examples</a>...</p>
+          </body>
+          </html>
+          EOF
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: './examples'
+          path: "_site"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
