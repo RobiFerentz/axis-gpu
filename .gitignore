@@ -9,3 +9,4 @@ docs/
 # Transpiled example files (built during CI)
 examples/*.js
 examples/*.js.map
+_site/
